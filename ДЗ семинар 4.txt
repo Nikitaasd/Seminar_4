@@ -1,0 +1,74 @@
+// Задача 25
+Console.Clear();
+
+int A = GetNumberFromUser ("Введите первое число: ", "Неверно");
+int B = GetNumberFromUser ("Введите второе число: ", "Неверно");
+
+Console.Clear();
+int C = CalculationMetod(A, B);
+Console.WriteLine ($"{A},{B} -> {C}");
+
+
+    static int GetNumberFromUser(string message, string errorMessage)
+    {    
+        while(true)
+        {
+            Console.Write(message);
+            bool isCorrect = int.TryParse(Console.ReadLine(), out int userNumber);
+            if(isCorrect)
+                return userNumber;
+            Console.WriteLine(errorMessage);
+        }    
+    }
+
+    static int CalculationMetod(int A, int B)
+    {
+    int v = (int)Math.Pow(A, B);
+    return v;
+    }
+
+
+
+// Задача 27
+Console.Clear();
+int number = GetNumberFromUser("Введите число: ", "Ошибка ввода");
+int len = NumberSchet(number);
+SumNumbers(number, len);
+
+
+
+static int GetNumberFromUser(string message, string errorMessage)
+    {    
+        while(true)
+        {
+            Console.Write(message);
+            bool isCorrect = int.TryParse(Console.ReadLine(), out int userNumber);
+            if(isCorrect)
+                return userNumber;
+            Console.WriteLine(errorMessage);
+        }    
+    }
+
+
+int NumberSchet(int a)
+{
+    int index = 0;
+    while (a > 0)
+    {
+        a /= 10;
+        index++;
+    }
+    return index;
+}
+
+
+void SumNumbers(int n, int len)
+{
+    int sum = 0;
+    for (int i = 1; i <= len; i++)
+    {
+        sum += n % 10;
+        n /= 10;
+    }
+    Console.WriteLine(sum);
+}
